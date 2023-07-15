@@ -57,7 +57,7 @@ const createVideo: VideoHandlers["create"] = async (req, res) => {
           );
           thumbnailUrl = `https://${
             process.env.MINIO_ENDPOINT
-          }/origin/thumbnails/${slugify(formaDataFields.title)}-thumbnail`;
+          }/wyw/thumbnails/${slugify(formaDataFields.title)}-thumbnail`;
         }
         if (fileData.filename.substring(0, 2) === "te") {
           await uploadToS3(
@@ -67,7 +67,7 @@ const createVideo: VideoHandlers["create"] = async (req, res) => {
           );
           teaserUrl = `https://${
             process.env.MINIO_ENDPOINT
-          }/origin/teasers/${slugify(formaDataFields.title)}-teaser`;
+          }/wyw/teasers/${slugify(formaDataFields.title)}-teaser`;
         }
         if (fileData.filename.substring(0, 2) === "vi") {
           await uploadToS3(
@@ -84,7 +84,7 @@ const createVideo: VideoHandlers["create"] = async (req, res) => {
               duration: durationParser(formaDataFields.duration),
               videoUrl: `https://${
                 process.env.MINIO_ENDPOINT
-              }/origin/videos/${slugify(formaDataFields.title)}`,
+              }/wyw/videos/${slugify(formaDataFields.title)}`,
               thumbnailUrl: thumbnailUrl,
               teaserUrl: teaserUrl,
             },

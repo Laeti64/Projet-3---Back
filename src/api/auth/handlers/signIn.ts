@@ -33,7 +33,7 @@ const signIn: AuthController["signIn"] = async (req, res) => {
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     });
 
-    res.status(200).json(userWithoutPassword);
+    return res.status(200).json(userWithoutPassword);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });
