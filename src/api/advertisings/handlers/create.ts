@@ -20,7 +20,7 @@ const createAdd: AdvertisingHandlers["create"] = async (req, res) => {
     };
 
     minioClient.putObject(
-      "origin",
+      "wyw",
       `/ads/images/${fields.title.join("")}`,
       file,
       metadata as any,
@@ -37,7 +37,7 @@ const createAdd: AdvertisingHandlers["create"] = async (req, res) => {
         description: fields.description.join(""),
         imageUrl: `https://${
           process.env.MINIO_ENDPOINT
-        }/origin/ads/images/${fields.title.join("")}`,
+        }/wyw/ads/images/${fields.title.join("")}`,
         linkTo: fields.linkTo.join(""),
         title: fields.title.join(""),
       },

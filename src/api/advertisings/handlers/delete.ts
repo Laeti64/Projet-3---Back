@@ -15,10 +15,7 @@ const deleteAdd: AdvertisingHandlers["delete"] = async (req, res) => {
     res
       .status(200)
       .json({ message: `${advertisingToDelete.title} has been deleted` });
-    minioClient.removeObject(
-      "origin",
-      `/ads/images/${advertisingToDelete.title}`
-    );
+    minioClient.removeObject("wyw", `/ads/images/${advertisingToDelete.title}`);
     (err: string) => {
       if (err) {
         throw new Error(`${err}`);
