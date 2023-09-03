@@ -19,7 +19,7 @@ const deleteVideo: VideoHandlers["delete"] = async (req, res) => {
       return `/${splitedPath.slice(splitedPath.length - 2).join("/")}`;
     };
 
-    minioClient.removeObjects("origin", [
+    minioClient.removeObjects("wyw", [
       `${videoMinioPathToDelete(videoToDelete.videoUrl)}`,
       `${videoMinioPathToDelete(videoToDelete.thumbnailUrl)}`,
       `${videoMinioPathToDelete(videoToDelete.teaserUrl)}`,
