@@ -55,9 +55,6 @@ const createVideo: VideoHandlers["create"] = async (req, res) => {
             `/thumbnails/${slugify(formaDataFields.title)}-thumbnail`,
             metadata
           );
-          thumbnailUrl = `https://${
-            process.env.MINIO_ENDPOINT
-          }/wyw/thumbnails/${slugify(formaDataFields.title)}-thumbnail`;
         }
         if (fileData.filename.substring(0, 2) === "te") {
           await uploadToS3(
@@ -65,9 +62,6 @@ const createVideo: VideoHandlers["create"] = async (req, res) => {
             `/teasers/${slugify(formaDataFields.title)}-teaser`,
             metadata
           );
-          teaserUrl = `https://${
-            process.env.MINIO_ENDPOINT
-          }/wyw/teasers/${slugify(formaDataFields.title)}-teaser`;
         }
         if (fileData.filename.substring(0, 2) === "vi") {
           await uploadToS3(
@@ -75,6 +69,13 @@ const createVideo: VideoHandlers["create"] = async (req, res) => {
             `/videos/${slugify(formaDataFields.title)}`,
             metadata
           );
+          teaserUrl = `https://${
+            process.env.MINIO_ENDPOINT
+          }/wyw/teasers/${slugify(formaDataFields.title)}-teaser`;
+          thumbnailUrl = `https://${
+            process.env.MINIO_ENDPOINT
+          }/wyw/thumbnails/${slugify(formaDataFields.title)}-thumbnail`;
+
           console.log(formaDataFields);
           const videoToCreate = await prisma.video.create({
             data: {
